@@ -1,0 +1,91 @@
+{% include "header.html" %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BookMart</title>
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/homepage.css' %}" type="text/css">
+    <!-- Fonts...... -->
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300&display=swap" rel="stylesheet">
+
+    <!-- Google icons  -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+
+<body>
+    <main>
+        <div class="books">
+            <div>
+                <img src="https://images-na.ssl-images-amazon.com/images/I/718ReYbwlFL.jpg" alt="" class="book-img">
+            </div>
+            <div class="descp">
+                <h2 class="book-name">After You</h2>
+                <h3 class="author">by Jojo Myoes</h3>
+                <h3 class="rating">1.987 rating</h3>
+                <p class="info">
+                    It continues the story of Louisa Clark after Will's death. She is trying to move on.
+                </p>
+                <button type="submit"> <a href="/category/2/After%20You"> See the Book </a></button>
+            </div>
+        </div>
+
+        <div class="books">
+            <div>
+                <img src="https://images-na.ssl-images-amazon.com/images/I/91JxVjINNsL.jpg" alt="" class="book-img">
+            </div>
+            <div class="descp">
+                <h2 class="book-name">Big Magic</h2>
+                <h3 class="author">by Elizabeth Gilbert</h3>
+                <h3 class="rating">1.987 rating</h3>
+                <p class="info">
+                    Readers of all ages and walks of life have drawn inspiration from Elizabeth
+                    Gilbert’s books.
+                </p>
+                <button type="submit" id="b1" > <a href="/category/3/Big%20Magic"> See the Book </a></button>
+            </div>
+        </div>
+
+        <div class="books">
+            <div>
+                <img src="https://images-na.ssl-images-amazon.com/images/I/9129dzchsGL.jpg" alt="" class="book-img">
+            </div>
+            <div class="descp">
+                <h2 class="book-name">A Tale for the Time Being</h2>
+                <h3 class="author">by Ruth Ozeki</h3>
+                <h3 class="rating">1.987 rating</h3>
+                <p class="info">
+                    In Tokyo, sixteen-year-old Nao has decided there’s only one escape from her aching loneliness
+
+                </p>
+                <button type="submit" id="b2"><a href="/category/1/A%20Tale%20for%20the%20Time%20Being"> See the Book</a></button>
+            </div>
+        </div>
+
+        <div class="books">
+            <div>
+                <img src="https://images-na.ssl-images-amazon.com/images/I/81djg0KWthS.jpg"
+                    alt="" class="book-img">
+            </div>
+            <div class="descp">
+                <h2 class="book-name">The Great Gatsby</h2>
+                <h3 class="author">by F. Scott Fitzgerald</h3>
+                <h3 class="rating">1.987 rating</h3>
+                <p class="info">
+                    The novel was inspired by a youthful romance Fitzgerald had with socialite Ginevra King
+                </p>
+                <button type="submit" id="b3"><a href="/category/2/The%20Great%20Gatsby"> See the Book </a></button>
+            </div>
+        </div>
+
+    </main>
+
+{% load static%}
+<script src="{% static 'js/cart.js' %}" type="text/javascript"></script>
+</body>
+</html>

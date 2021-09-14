@@ -1,0 +1,146 @@
+{% include "header.html" %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ cat_item.0.product_category }}</title>
+</head>
+<body>
+<div class="container-fluid position-relative" style="z-index: 99999;">
+
+</div>
+<div class="container-fluid mb-3">
+	<div class="row">
+		<div class="col-md-12 bg-light border-bottom pt-5 pb-5">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12">
+						<h2>{{ cat_item.0.product_category }}</h2>
+						<ol class="breadcrumb p-0 m-0 bg-transparent">
+							<li class="breadcrumb-item"><a href="/">Home</a></li>
+							<li class="breadcrumb-item active">{{ cat_item.0.product_category }}</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row mb-5">
+		<center>
+		<div class="col-md-9">
+			</center>
+					<div class="card">
+
+				<div class="card-header">
+					<div class="row">
+						<div class="col-md-5">
+							<div class="btn-group" role="group">
+								<button type="button" class="btn btn-secondary active"><i class="fas fa-th"></i></button>
+								<button type="button" class="btn btn-secondary"><i class="fas fa-th-list"></i></button>
+								<button type="button" class="btn btn-secondary">
+									<i class="fas fa-sync-alt"></i>
+									<span>Product Compare (0)</span>
+								</button>
+							</div>
+						</div>
+						<div class="col-md-4">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text">Sort By:</span>
+								</div>
+								<select class="form-control" id="form" name="">
+									<option value="">Default</option>
+									<option value="">Name (A - Z)</option>
+									<option value="">Name (Z - A)</option>
+									<option value="">Price (Low &gt; High)</option>
+									<option value="">Price (High &gt; Low)</option>
+									<option value="">Rating (Highest)</option>
+									<option value="">Rating (Lowest)</option>
+									<option value="">Model (A - Z)</option>
+									<option value="">Model (Z - A)</option>
+								</select>
+							</div>
+						</div>
+						<div class="col-md-3">
+							<div class="input-group">
+								<div class="input-group-prepend">
+									<span class="input-group-text">Show:</span>
+								</div>
+								<select class="form-control" id="" name="">
+									<option value="">15</option>
+									<option value="">25</option>
+									<option value="">50</option>
+									<option value="">75</option>
+									<option value="">100</option>
+								</select>
+							</div>
+						</div>
+					</div>
+                </div>
+                <!--product display-->
+				<div class="container py-5">
+                    <div class="row">
+                        <div class="col-lg-12 mx-auto">
+                            <ul class="list-group shadow">
+								{% for i in cat_item %}
+                                <li class="list-group-item">
+                                    <div class="media align-items-lg-center flex-column flex-lg-row"> <img src="/media/{{i.product_image}}" alt="Generic placeholder image" width="250" height="200" class="order-1 order-lg-1">
+                                        <div class="media-body order-2 order-lg-2 ml-lg-5">
+                                            <h5 class="mt-0 mb-1"> <a href="/category/{{i.product_category.id}}/{{i.product_name}}">  {{i.product_name}}  </a></h5>
+                                            <div class="product-rating mb-2"> <span class="badge23"><i class="fa fa-star"></i> 4 Star</span> <span class="rating-review mb-1">4 Ratings &amp; 3 Recommendations</span> </div> <span class="product_price price-new">₹ {{i.product_price}} </span>
+                                            <hr class="mb-2 mt-1 seperator">
+                                            <div class="d-flex align-items-center justify-content-between mt-1">
+                                                <ul class="list-inline small">
+                                                    <li><img src="https://img.icons8.com/material-outlined/10/000000/filled-circle--v1.png"> Size: {{i.product_dimension}}</li>
+                                                    <li><img src="https://img.icons8.com/material-outlined/10/000000/filled-circle--v1.png"> Color: {{i.product_desc}} </li>
+                                                </ul>
+                                                <ul class="list-inline small">
+                                                    <li><img src="https://img.icons8.com/material-outlined/10/000000/filled-circle--v1.png"> Replacement: 30 days replacement</li>
+                                                    <li><img src="https://img.icons8.com/material-outlined/10/000000/filled-circle--v1.png"> In Stock: 24 units sold this week</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+								</li>
+								{% endfor %}
+							</ul>
+						</div>
+
+						<div class="col-md-6">
+							<p class="text-right mb-0 mt-1">Showing 1 to 12 of 12 (1 Pages)</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="row mb-5">
+		<div class="col-md-12">
+			<div class="card">
+				<div class="card-body">
+					<div class="row">
+						<div class="col-md-3">
+							<i class="float-left mr-3 fa-3x fas fa-shipping-fast"></i>
+							<p class="h6">Free shipping & Return <br/><small class="text-muted">For all orders over $500</small></p>
+						</div>
+						<div class="col-md-3">
+							<i class="float-left mr-3 fa-3x fas fa-thumbs-up"></i>
+							<p class="h6">Customer Protection <br/><small class="text-muted">From click to delivery.</small></p>
+						</div>
+						<div class="col-md-3">
+							<i class="float-left mr-3 fa-3x fas fa-umbrella"></i>
+							<p class="h6">Safe Payment <br/><small class="text-muted">Use world’s most secure payment methods.</small></p>
+						</div>
+						<div class="col-md-3">
+							<i class="float-left mr-3 fa-3x fas fa-life-ring"></i>
+							<p class="h6">Support 24/7 <br/><small class="text-muted">We answer for question all time</small></p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

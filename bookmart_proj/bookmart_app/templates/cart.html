@@ -1,0 +1,92 @@
+{% include "header.html" %}
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    {% load static %}
+    <link rel="stylesheet" href="{%static 'css/style.css' %}" type="text/css">
+    <link rel="stylesheet" href="{%static 'css/cart.css' %}" type="text/css">
+    <title>Cart</title>
+    </head>
+    <div class="container mt-5 p-3 rounded kart">
+        <div class="row no-gutters">
+            <div class="col-md-8">
+                <div class="product-details mr-2">
+                    <div class="d-flex flex-row align-items-center"><i class="fa fa-long-arrow-left"></i><span class="ml-2"><a href="/">Continue Shopping</a></span></div>
+                    <hr>
+                    <h6 class="mb-0">Shopping cart</h6>
+                    <div id="items">
+
+                    </div>
+
+
+
+                </div>
+            </div>
+
+               <div class="col-md-4">
+                <div class="payment-info">
+                    <form action="cart" method="POST">
+                     {% csrf_token %}
+                    <div class="d-flex justify-content-between align-items-center"><span>Checkout</span></div>
+                    <input type="hidden" name="itemsJson" id="itemsJson">
+                    <div><label class="credit-card-label">Name</label><input type="text" class="form-control credit-inputs" placeholder="Name" name="name" required></div>
+                    <div><label class="credit-card-label">Address</label><input type="text" class="form-control credit-inputs" placeholder="XYZ Apartment" name="address" required></div>
+                    <div class="row">
+                        <div class="col-md-6"><label class="credit-card-label">City</label><input type="text" class="form-control credit-inputs" placeholder="Delhi" name="city" required></div>
+                        <div class="col-md-6"><label class="credit-card-label">Zip Code</label><input type="text" class="form-control credit-inputs" placeholder="342" name="zipcode" required></div>
+                    </div>
+                    <input type="submit" value="Place Order" class="btn btn-primary btn-block d-flex justify-content-between mt-3">
+                </div>
+             </div>
+          </form>
+        </div>
+    </div>
+    {% block js %}
+    <script>
+    if (localStorage.getItem('cart') == null) {
+        var cart = {};
+    } else {
+        cart = JSON.parse(localStorage.getItem('cart'));
+    }
+    console.log(cart);
+    var sum = 0;
+    //var tprice=0;
+    if ($.isEmptyObject(cart)) {
+        //if object is empty
+        mystr = `<p>Your cart is empty, please add some items to your cart before checking out!</p>`
+        $('#items').append(mystr);
+    } else {
+        for (item in cart) {
+            let name = cart[item][1];
+            let qty = cart[item][0];
+            let price = cart[item][2];
+            sum = sum + qty;
+           // tprice = tprice + qty*price;
+            mystr = `<div class="d-flex justify-content-between align-items-center mt-3 p-2 items rounded">
+                    <div class="ml-2">
+                <span class="font-weight-bold d-block">
+                        ${name}
+                        </span>
+                        <span class="spec"></span>
+                    </div>
+                    <div class="d-flex flex-row align-items-center"><span class="d-block">${price}</span><span class="d-block ml-5 font-weight-bold">${qty}</span></div>
+                    </div>
+                    </div>`
+            $('#items').append(mystr);
+        }
+    }
+    document.getElementById('cart').innerHTML = sum;
+   // document.getElementById('tprice').innerHTML = tprice;
+
+$('#itemsJson').val(JSON.stringify(cart));
+{% if thank %}
+alert('Thanks for ordering with us. Your order is BMRT101{{id}}. Use it to track your order using our order tracker');
+localStorage.clear();
+document.location = "/";
+{% endif %}
+    </script>
+    <script src="{% static 'js/cart.js' %}" type="text/javascript"></script>
+   {% endblock %}
+</html>
